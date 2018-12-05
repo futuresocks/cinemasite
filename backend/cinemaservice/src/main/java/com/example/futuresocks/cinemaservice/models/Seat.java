@@ -7,11 +7,13 @@ public class Seat {
 
     private Long id;
     private int number;
-    private List<Screening> screenings;
+    private List<Ticket> tickets;
+    private Room room;
 
-    public Seat(int number) {
+    public Seat(int number, Room room) {
         this.number = number;
-        this.screenings = new ArrayList<>();
+        this.tickets = new ArrayList<>();
+        this.room = room;
     }
 
     public Seat(){ }
@@ -32,15 +34,23 @@ public class Seat {
         this.number = number;
     }
 
-    public List<Screening> getScreenings() {
-        return screenings;
+    public List<Ticket> getTickets() {
+        return tickets;
     }
 
-    public void setScreenings(List<Screening> screenings) {
-        this.screenings = screenings;
+    public Room getRoom() {
+        return room;
     }
 
-    public void addScreening(Screening screening){
-        this.screenings.add(screening);
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public void addTicket(Ticket ticket){
+        this.tickets.add(ticket);
     }
 }

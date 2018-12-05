@@ -9,11 +9,13 @@ public class Screening {
     private Movie movie;
     private String time;
     private List<Ticket> tickets;
+    private Room room;
 
-    public Screening(Movie movie, String time) {
+    public Screening(Movie movie, String time, Room room) {
         this.time = time;
         this.movie = movie;
         this.tickets = new ArrayList<Ticket>();
+        this.room = room;
     }
 
     public Screening() {
@@ -49,6 +51,14 @@ public class Screening {
 
     public void setSeats(ArrayList<Ticket> tickets) {
         this.tickets = tickets;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     public void addSeat(Ticket ticket){
