@@ -1,9 +1,19 @@
 package com.example.futuresocks.cinemaservice.models;
 
+import javax.persistence.*;
+
 public class Ticket {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "screening_id", nullable = false)
     private Screening screening;
+
+    @ManyToOne
+    @JoinColumn(name = "seat_id", nullable = false)
     private Seat seat;
 
     public Ticket(Screening screening, Seat seat) {

@@ -1,13 +1,24 @@
 package com.example.futuresocks.cinemaservice.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "rooms")
 public class Room {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+
+    @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)
     private List<Seat> seats;
+
+    @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)
     private List<Screening> screenings;
 
     public Room(String name) {
