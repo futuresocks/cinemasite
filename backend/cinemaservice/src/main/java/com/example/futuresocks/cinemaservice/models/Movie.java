@@ -1,5 +1,7 @@
 package com.example.futuresocks.cinemaservice.models;
 
+import com.example.futuresocks.cinemaservice.models.enums.Rating;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +29,20 @@ public class Movie {
     @Column
     private int year;
 
+    @Enumerated(EnumType.STRING)
+    @Column
+    private Rating rating;
+
     @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
     private List<Screening> screenings;
 
-    public Movie(String title, String description, String img, int runtime, int year) {
+    public Movie(String title, String description, String img, int runtime, int year, Rating rating) {
         this.title = title;
         this.description = description;
         this.img = img;
         this.runtime = runtime;
         this.year = year;
+        this.rating = rating;
         this.screenings = new ArrayList<Screening>();
     }
 
@@ -88,6 +95,14 @@ public class Movie {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
     }
 
     public List<Screening> getScreenings() {
