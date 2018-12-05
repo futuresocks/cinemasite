@@ -2,6 +2,8 @@ package com.example.futuresocks.cinemaservice.models;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "tickets")
 public class Ticket {
 
     @Id
