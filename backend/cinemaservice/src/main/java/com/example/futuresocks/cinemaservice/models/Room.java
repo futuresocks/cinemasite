@@ -27,6 +27,9 @@ public class Room {
         this.screenings = new ArrayList<>();
     }
 
+    public Room() {
+    }
+
     public Long getId() {
         return id;
     }
