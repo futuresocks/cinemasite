@@ -15,11 +15,27 @@ public class Movie {
     @Column
     private String title;
 
+    @Column
+    private String description;
+
+    @Column
+    private String img;
+
+    @Column
+    private int runtime;
+
+    @Column
+    private int year;
+
     @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
     private List<Screening> screenings;
 
-    public Movie(String title) {
+    public Movie(String title, String description, String img, int runtime, int year) {
         this.title = title;
+        this.description = description;
+        this.img = img;
+        this.runtime = runtime;
+        this.year = year;
         this.screenings = new ArrayList<Screening>();
     }
 
@@ -32,6 +48,38 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public int getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(int runtime) {
+        this.runtime = runtime;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public List<Screening> getScreenings() {

@@ -33,7 +33,7 @@ public class CinemaserviceApplicationTests {
 
 	@Test
 	public void canCreateMovie(){
-		Movie movie = new Movie("Robocop");
+		Movie movie = new Movie("Robocop", "In a dystopic and crime-ridden Detroit, a terminally wounded cop returns to the force as a powerful cyborg haunted by submerged memories.", "https://m.media-amazon.com/images/M/MV5BZWVlYzU2ZjQtZmNkMi00OTc3LTkwZmYtZDVjNmY4OWFmZGJlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SY1000_CR0,0,644,1000_AL_.jpg", 103, 1987);
 		movieRepository.save(movie);
 	}
 
@@ -45,7 +45,7 @@ public class CinemaserviceApplicationTests {
 
 	@Test
 	public void canCreateScreening(){
-		Movie movie = new Movie("Robocop");
+		Movie movie = new Movie("Robocop", "In a dystopic and crime-ridden Detroit, a terminally wounded cop returns to the force as a powerful cyborg haunted by submerged memories.", "https://m.media-amazon.com/images/M/MV5BZWVlYzU2ZjQtZmNkMi00OTc3LTkwZmYtZDVjNmY4OWFmZGJlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SY1000_CR0,0,644,1000_AL_.jpg", 103, 1987);
 		movieRepository.save(movie);
 
 		Room room = new Room("Screen One");
@@ -66,7 +66,7 @@ public class CinemaserviceApplicationTests {
 
 	@Test
 	public void canCreateTickets(){
-		Movie movie = new Movie("Robocop");
+		Movie movie = new Movie("Robocop", "In a dystopic and crime-ridden Detroit, a terminally wounded cop returns to the force as a powerful cyborg haunted by submerged memories.", "https://m.media-amazon.com/images/M/MV5BZWVlYzU2ZjQtZmNkMi00OTc3LTkwZmYtZDVjNmY4OWFmZGJlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SY1000_CR0,0,644,1000_AL_.jpg", 103, 1987);
 		movieRepository.save(movie);
 
 		Room room = new Room("Screen One");
