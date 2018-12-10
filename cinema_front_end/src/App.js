@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import CinemaContainer from './containers/CinemaContainer';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import ScreeningContainer from './containers/ScreeningContainer';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Route exact path = "/" component = {CinemaContainer}/>
+        <Switch>
+          <Route exact path = "/" component = {CinemaContainer}/>
+            <Route path = "/screenings/:id" render = {(props) =>
+                <ScreeningContainer screeningId = {props.match.params.id}/>
+              }/>
+        </Switch>
       </Router>
     );
   }
