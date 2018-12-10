@@ -12,7 +12,6 @@ import java.util.List;
 public interface EmbedScreening {
     long getId();
     String getTime();
-    Movie getMovie();
     List<Ticket> getTickets();
     Room getRoom();
 }
