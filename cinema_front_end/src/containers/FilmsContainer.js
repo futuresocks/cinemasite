@@ -5,7 +5,7 @@ const FilmsContainer = ({movieData}) => {
 
   if(!movieData) return null;
 
-  const movies = movieData.map(movie => <FilmDetail movie= {movie}/>)
+  const movies = movieData.map(movie => <FilmDetail movie={movie}/>)
 
   return (
     <>
