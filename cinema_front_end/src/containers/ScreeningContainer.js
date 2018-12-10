@@ -15,6 +15,12 @@ class ScreeningContainer extends Component {
     this.handleTicketSubmit = this.handleTicketSubmit.bind(this);
   }
 
+  componentDidMount(){
+    fetch(`/api/screenings/${this.props.screeningId}`)
+    .then(data => data.json())
+    .then(screeningInfo => console.log(screeningInfo))
+  }
+
   handleTicketSubmit(selectedTickets){
     let ticketPrice = this.calculatePrice(selectedTickets);
     this.setState({selectedTickets, ticketPrice})
