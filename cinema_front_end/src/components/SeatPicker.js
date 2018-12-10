@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Seat from './Seat';
 
 class SeatPicker extends Component{
   constructor(props){
@@ -8,11 +9,21 @@ class SeatPicker extends Component{
 
   render(){
 
-    if(!this.props.screening) return null;
-    console.log(this.props.screening);
+    const screeningSeats = this.props.screening._embedded.room.seats
+                          .map(seat => seat.number);
+
+    const bookedSeats = this.props.screening._embedded.tickets
+                        .map(ticket => ticket.seat.number);
+
+    const seats = screeningSeats.map(seatNo => {
+      return bookedSeats.includes(seatNo) ? <Seat number = {seatNo} booked = {true}/> : <Seat number = {seatNo} booked = {false}/>
+    })
 
     return(
+      <>
       <h1>'mon pick yer seats</h1>
+      {seats}
+      </>
     )
   }
 }

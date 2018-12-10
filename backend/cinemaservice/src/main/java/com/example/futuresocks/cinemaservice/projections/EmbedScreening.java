@@ -14,4 +14,5 @@ public interface EmbedScreening {
     String getTime();
     List<Ticket> getTickets();
     Room getRoom();
+    Movie getMovie();
 }
