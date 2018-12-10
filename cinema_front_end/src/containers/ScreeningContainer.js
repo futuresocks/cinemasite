@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
+import SeatPicker from '../components/SeatPicker';
 import TicketSelector from '../components/TicketSelector';
 import PriceDisplay from '../components/PriceDisplay';
 import prices from '../constants/Prices'
@@ -55,17 +56,7 @@ class ScreeningContainer extends Component {
          onRequestClose={this.closeModal}
          contentLabel="Example Modal"
        >
-
-         <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-         <button onClick={this.closeModal}>close</button>
-         <div>I am a modal</div>
-         <form>
-           <input />
-           <button>tab navigation</button>
-           <button>stays</button>
-           <button>inside</button>
-           <button>the modal</button>
-         </form>
+        <SeatPicker/>
        </Modal>
       <PriceDisplay price = {this.state.ticketPrice}/>
       <TicketSelector handleSubmit = {this.handleTicketSubmit}/>
