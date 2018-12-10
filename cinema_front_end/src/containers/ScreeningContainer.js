@@ -9,6 +9,7 @@ class ScreeningContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
+      screening: null,
       selectedTickets: [],
       selectedSeats: [],
       ticketPrice: 0,
@@ -31,7 +32,7 @@ class ScreeningContainer extends Component {
   componentDidMount(){
     fetch(`/api/screenings/${this.props.screeningId}`)
     .then(data => data.json())
-    .then(screeningInfo => console.log(screeningInfo))
+    .then(screening => this.setState({screening}));
   }
 
   handleTicketSubmit(selectedTickets){
@@ -56,7 +57,7 @@ class ScreeningContainer extends Component {
          onRequestClose={this.closeModal}
          contentLabel="Example Modal"
        >
-        <SeatPicker/>
+        <SeatPicker screening = {this.state.screening}/>
        </Modal>
       <PriceDisplay price = {this.state.ticketPrice}/>
       <TicketSelector handleSubmit = {this.handleTicketSubmit}/>

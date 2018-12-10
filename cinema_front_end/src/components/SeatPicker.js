@@ -7,6 +7,10 @@ class SeatPicker extends Component{
   }
 
   render(){
+
+    if(!this.props.screening) return null;
+    console.log(this.props.screening);
+
     return(
       <h1>'mon pick yer seats</h1>
     )
