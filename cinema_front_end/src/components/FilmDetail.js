@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 const FilmDetail = ({movie}) => {
 
-  debugger;
-
-  if(!movie) return null;
   //filter screenings by date here?
 
-  const screenings = movie.screenings.map(screening => <li>{screening.time}</li>);
+  const screenings = movie._embedded.screenings.map(screening => <Link to={"screenings/" + screening.id}>{screening.time}</Link>)
 
   return (
     <>
