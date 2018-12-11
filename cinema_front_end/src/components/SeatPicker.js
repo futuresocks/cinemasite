@@ -21,7 +21,7 @@ class SeatPicker extends Component{
     if(!this.state.selectedSeats.includes(seatNo)){
       selectedSeats = [...this.state.selectedSeats, seatNo];
     } else {
-      selectedSeats = [...this.state.selectedSeats].splice(this.state.selectedSeats.indexOf(seatNo), 1);
+      selectedSeats = [...this.state.selectedSeats].filter(seat => seat !== seatNo);
     }
     this.setState({selectedSeats})
   }
