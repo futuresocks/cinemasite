@@ -13,6 +13,17 @@ class SeatPicker extends Component{
                    .map(ticket => ticket.seat.number)
     }
     this.seatGenerator = this.seatGenerator.bind(this);
+    this.handleSeatClick = this.handleSeatClick.bind(this);
+  }
+
+  handleSeatClick(seatNo){
+    let selectedSeats;
+    if(!this.state.selectedSeats.includes(seatNo)){
+      selectedSeats = [...this.state.selectedSeats, seatNo];
+    } else {
+      selectedSeats = [...this.state.selectedSeats].splice(this.state.selectedSeats.indexOf(seatNo), 1);
+    }
+    this.setState({selectedSeats})
   }
 
   seatGenerator(seatNo){
