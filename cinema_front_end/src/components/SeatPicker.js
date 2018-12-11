@@ -1,23 +1,40 @@
 import React, {Component} from 'react';
 import Seat from './Seat';
+import UnavailableSeat from './UnavailableSeat';
 
 class SeatPicker extends Component{
   constructor(props){
     super(props);
-    this.state = {}
+    this.state = {
+      selectedSeats: [],
+      screeningSeats: this.props.screening._embedded.room.seats
+                            .map(seat => seat.number),
+      bookedSeats: this.props.screening._embedded.tickets
+                   .map(ticket => ticket.seat.number)
+    }
+    this.seatGenerator = this.seatGenerator.bind(this);
+  }
+
+  seatGenerator(seatNo){
+
+    let selectedStatus = false;
+
+    if(this.state.bookedSeats.includes(seatNo)){
+      return <UnavailableSeat number = {seatNo}/>
+    }
+
+    if(this.state.selectedSeats.includes(seatNo)){
+      selectedStatus = true;
+    }
+
+    return <Seat number = {seatNo}
+                 selected = {selectedStatus}
+                 seatClick = {this.handleSeatClick}/>
   }
 
   render(){
 
-    const screeningSeats = this.props.screening._embedded.room.seats
-                          .map(seat => seat.number);
-
-    const bookedSeats = this.props.screening._embedded.tickets
-                        .map(ticket => ticket.seat.number);
-
-    const seats = screeningSeats.map(seatNo => {
-      return bookedSeats.includes(seatNo) ? <Seat number = {seatNo} booked = {true}/> : <Seat number = {seatNo} booked = {false}/>
-    })
+    const seats = this.state.screeningSeats.map(seatNo => this.seatGenerator(seatNo));
 
     return(
       <>
