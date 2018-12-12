@@ -57,6 +57,12 @@ class ScreeningContainer extends Component {
     return totalPrice;
   }
 
+  bookTickets(){
+    //post ticket numbers and screening number to API
+    //close modal 
+    console.log('tickets booked!');
+  }
+
   render(){
     return (
       <>
@@ -65,7 +71,7 @@ class ScreeningContainer extends Component {
          onRequestClose={this.closeModal}
          contentLabel="Example Modal"
        >
-        <SeatPicker screening = {this.state.screening} seatLimit = {this.ticketCount()}/>
+        <SeatPicker screening = {this.state.screening} seatLimit = {this.ticketCount()} handleClick = {this.bookTickets}/>
        </Modal>
       <PriceDisplay price = {this.state.ticketPrice}/>
       <TicketSelector handleSelect = {this.handleTicketSelect} handleSubmit = {this.openModal}/>

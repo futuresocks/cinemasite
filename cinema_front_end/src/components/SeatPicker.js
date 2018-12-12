@@ -59,6 +59,7 @@ class SeatPicker extends Component{
       <>
       <h1>'mon pick yer seats</h1>
       {seats}
+      <button onClick = {this.props.handleClick}>Order Seats</button>
       </>
     )
   }
