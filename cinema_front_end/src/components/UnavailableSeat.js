@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UnavailableSeat = () => (
-  <p>I'm BOOKED, pal</p>
+  <img src="/img/unavailable.jpg"/>
 )
 
 export default UnavailableSeat

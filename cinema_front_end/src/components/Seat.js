@@ -9,10 +9,13 @@ const Seat = ({selected, number, seatClick})=>{
     seatClick(number)
   }
 
-  const booked = selected ? "deffo selected" : "no selected";
+  const imgSrc = selected ? "/img/selected.jpg" : "/img/available,jpg";
 
   return (
-    <p onClick = {handleClick}>I'm seat {number} and I'm {booked}</p>
+    <>
+    <h3>{number}</h3>
+    <img src = {imgSrc} onClick = {handleClick}/>
+    </>
   )
 }
 
