@@ -9,7 +9,7 @@ const Seat = ({selected, number, seatClick})=>{
     seatClick(number)
   }
 
-  const imgSrc = selected ? "/img/selected.jpg" : "/img/available,jpg";
+  const imgSrc = selected ? "/img/selected.jpg" : "/img/available.jpg";
 
   return (
     <>
