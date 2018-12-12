@@ -14,6 +14,7 @@ class SeatPicker extends Component{
     }
     this.seatGenerator = this.seatGenerator.bind(this);
     this.handleSeatClick = this.handleSeatClick.bind(this);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
   handleSeatClick(seatNo){
@@ -30,6 +31,12 @@ class SeatPicker extends Component{
         let selectedSeats = [...this.state.selectedSeats].filter(seat => seat !== seatNo);
         this.setState({selectedSeats})
       }
+    }
+  }
+
+  handleButtonClick(){
+    if(this.state.selectedSeats.length === this.props.seatLimit){
+      this.props.handleClick();
     }
   }
 
@@ -59,7 +66,7 @@ class SeatPicker extends Component{
       <>
       <h1>'mon pick yer seats</h1>
       {seats}
-      <button onClick = {this.props.handleClick}>Order Seats</button>
+      <button onClick = {this.handleButtonClick}>Order Seats</button>
       </>
     )
   }
