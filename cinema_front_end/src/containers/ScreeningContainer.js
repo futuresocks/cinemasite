@@ -20,6 +20,7 @@ class ScreeningContainer extends Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.ticketCount = this.ticketCount.bind(this);
+    this.bookTickets = this.bookTickets.bind(this);
   }
 
   openModal() {
@@ -59,7 +60,7 @@ class ScreeningContainer extends Component {
 
   bookTickets(){
     //post ticket numbers and screening number to API
-    //close modal 
+    this.closeModal();
     console.log('tickets booked!');
   }
 
