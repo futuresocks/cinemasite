@@ -8,23 +8,31 @@ class SeatPicker extends Component{
     this.state = {
       selectedSeats: [],
       screeningSeats: this.props.screening._embedded.room.seats
-                            .map(seat => seat.number),
+      .map(seat => seat.number),
       bookedSeats: this.props.screening._embedded.tickets
-                   .map(ticket => ticket.seat.number)
+      .map(ticket => ticket.seat.number)
     }
     this.seatGenerator = this.seatGenerator.bind(this);
     this.handleSeatClick = this.handleSeatClick.bind(this);
   }
 
   handleSeatClick(seatNo){
-    let selectedSeats;
-    if(!this.state.selectedSeats.includes(seatNo)){
-      selectedSeats = [...this.state.selectedSeats, seatNo];
+    if(this.state.selectedSeats.length < this.props.seatLimit){
+      let selectedSeats;
+      if(!this.state.selectedSeats.includes(seatNo)){
+        selectedSeats = [...this.state.selectedSeats, seatNo];
+      } else {
+        selectedSeats = [...this.state.selectedSeats].filter(seat => seat !== seatNo);
+      }
+      this.setState({selectedSeats})
     } else {
-      selectedSeats = [...this.state.selectedSeats].filter(seat => seat !== seatNo);
+      if(this.state.selectedSeats.includes(seatNo)){
+        let selectedSeats = [...this.state.selectedSeats].filter(seat => seat !== seatNo);
+        this.setState({selectedSeats})
+      }
     }
-    this.setState({selectedSeats})
   }
+
 
   seatGenerator(seatNo){
 
@@ -39,8 +47,8 @@ class SeatPicker extends Component{
     }
 
     return <Seat number = {seatNo}
-                 selected = {selectedStatus}
-                 seatClick = {this.handleSeatClick}/>
+    selected = {selectedStatus}
+    seatClick = {this.handleSeatClick}/>
   }
 
   render(){
