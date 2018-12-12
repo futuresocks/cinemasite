@@ -17,13 +17,14 @@ class TicketSelector extends Component {
 
   handleSubmit(evt){
     evt.preventDefault();
+    this.props.handleSubmit();
   }
 
   handleChange(evt){
     let tickets = this.state.tickets;
     tickets[evt.target.id] = evt.target.value;
     this.setState({tickets}, () => {
-      this.props.handleSubmit(this.state.tickets)
+      this.props.handleSelect(this.state.tickets)
     });
   }
 

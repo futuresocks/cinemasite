@@ -16,7 +16,7 @@ class ScreeningContainer extends Component {
       modalIsOpen: false
     }
     this.calculatePrice = this.calculatePrice.bind(this);
-    this.handleTicketSubmit = this.handleTicketSubmit.bind(this);
+    this.handleTicketSelect = this.handleTicketSelect.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.ticketCount = this.ticketCount.bind(this);
@@ -44,7 +44,7 @@ class ScreeningContainer extends Component {
     .then(screening => this.setState({screening}));
   }
 
-  handleTicketSubmit(selectedTickets){
+  handleTicketSelect(selectedTickets){
     let ticketPrice = this.calculatePrice(selectedTickets);
     this.setState({selectedTickets, ticketPrice})
   }
@@ -60,7 +60,6 @@ class ScreeningContainer extends Component {
   render(){
     return (
       <>
-      <button onClick={this.openModal}>Open Modal</button>
        <Modal
          isOpen={this.state.modalIsOpen}
          onRequestClose={this.closeModal}
@@ -69,7 +68,7 @@ class ScreeningContainer extends Component {
         <SeatPicker screening = {this.state.screening} seatLimit = {this.ticketCount()}/>
        </Modal>
       <PriceDisplay price = {this.state.ticketPrice}/>
-      <TicketSelector handleSubmit = {this.handleTicketSubmit}/>
+      <TicketSelector handleSelect = {this.handleTicketSelect} handleSubmit = {this.openModal}/>
       </>
     )
   }
