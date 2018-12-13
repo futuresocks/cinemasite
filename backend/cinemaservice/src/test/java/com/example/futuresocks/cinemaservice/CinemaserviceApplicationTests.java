@@ -60,7 +60,7 @@ public class CinemaserviceApplicationTests {
 		Room room = new Room("Screen One");
 		roomRepository.save(room);
 
-		Seat seat = new Seat(1, room);
+		Seat seat = new Seat("A1", room);
 		seatRepository.save(seat);
 	}
 
@@ -75,7 +75,7 @@ public class CinemaserviceApplicationTests {
 		Screening screening = new Screening(movie, "12:00pm", room);
 		screeningRepository.save(screening);
 
-		Seat seat = new Seat(1, room);
+		Seat seat = new Seat("A1", room);
 		seatRepository.save(seat);
 
 		Ticket ticket = new Ticket(screening, seat);

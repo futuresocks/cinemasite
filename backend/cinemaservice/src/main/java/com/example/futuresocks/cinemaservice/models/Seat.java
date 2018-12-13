@@ -13,7 +13,7 @@ public class Seat {
     private Long id;
 
     @Column
-    private int number;
+    private String number;
 
     @OneToMany(mappedBy = "seat")
     private List<Ticket> tickets;
@@ -22,7 +22,7 @@ public class Seat {
     @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
-    public Seat(int number, Room room) {
+    public Seat(String number, Room room) {
         this.number = number;
         this.tickets = new ArrayList<>();
         this.room = room;
@@ -38,11 +38,11 @@ public class Seat {
         this.id = id;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

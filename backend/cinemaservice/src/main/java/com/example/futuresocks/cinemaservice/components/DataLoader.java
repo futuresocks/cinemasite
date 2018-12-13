@@ -36,9 +36,14 @@ public class DataLoader implements ApplicationRunner {
         Room room = new Room("Screen One");
         roomRepository.save(room);
 
+        String[] letters = new String[]{"a", "b", "c", "d"};
+
         for(int i = 1; i <= 10; i++){
-            Seat seat = new Seat(i, room);
+            for(String letter: letters){
+                String seatNo = letter + String.valueOf(i);
+            Seat seat = new Seat(seatNo, room);
             seatRepository.save(seat);
+        }
         }
 
         String[] showTimes = new String[]{"11:00", "13:00"};
