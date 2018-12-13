@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-    @RequestMapping(value = "/screenings")
+    @RequestMapping(value = "api/screenings")
     public class ScreeningController {
 
     @Autowired
