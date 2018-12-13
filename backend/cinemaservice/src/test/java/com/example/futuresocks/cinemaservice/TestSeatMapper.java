@@ -22,16 +22,18 @@ public class TestSeatMapper {
         Room room = new Room("Screen One");
 
         Seat seat1 = new Seat("A1", room);
-        Seat seat2 = new Seat("B2", room);
+        Seat seat2 = new Seat("B1", room);
+        Seat seat3 = new Seat("B2", room);
 
         seats.add(seat1);
         seats.add(seat2);
+        seats.add(seat3);
 
         SeatMapper seatMapper = new SeatMapper();
 
         HashMap<String, List<Seat>> expected = new HashMap<>();
         expected.put("A", new ArrayList<Seat>(Arrays.asList(seat1)));
-        expected.put("B", new ArrayList<Seat>(Arrays.asList(seat2)));
+        expected.put("B", new ArrayList<Seat>(Arrays.asList(seat2, seat3)));
 
         assertEquals(expected, seatMapper.mapSeats(seats));
     }

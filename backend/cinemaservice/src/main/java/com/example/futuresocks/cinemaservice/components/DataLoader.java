@@ -53,11 +53,13 @@ public class DataLoader implements ApplicationRunner {
             screeningRepository.save(screening);
         }
 
-        for(int i = 1; i <= 5; i ++){
-            Screening screening = screeningRepository.findById(Long.valueOf(1)).get();
-            Seat seat = seatRepository.findById(Long.valueOf(i)).get();
-            Ticket ticket = new Ticket(screening, seat);
-            ticketRepository.save(ticket);
+        for(int i = 1; i <= 40; i ++) {
+            if (i % 4 == 0) {
+                Screening screening = screeningRepository.findById(Long.valueOf(1)).get();
+                Seat seat = seatRepository.findById(Long.valueOf(i)).get();
+                Ticket ticket = new Ticket(screening, seat);
+                ticketRepository.save(ticket);
+            }
         }
 
     }
