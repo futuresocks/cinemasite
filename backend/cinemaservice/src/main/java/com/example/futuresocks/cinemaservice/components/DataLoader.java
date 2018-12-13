@@ -2,6 +2,7 @@ package com.example.futuresocks.cinemaservice.components;
 
 import com.example.futuresocks.cinemaservice.models.*;
 import com.example.futuresocks.cinemaservice.repositories.*;
+import com.example.futuresocks.cinemaservice.repositories.ScreeningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

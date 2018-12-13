@@ -1,5 +1,7 @@
 package com.example.futuresocks.cinemaservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +17,11 @@ public class Seat {
     @Column
     private String number;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "seat")
     private List<Ticket> tickets;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "room_id", nullable = false)
     private Room room;
