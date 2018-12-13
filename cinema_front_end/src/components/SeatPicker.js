@@ -40,7 +40,6 @@ class SeatPicker extends Component{
     }
   }
 
-
   seatGenerator(seatNo){
 
     let selectedStatus = false;
