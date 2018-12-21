@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import SeatRow from './SeatRow'
 import Seat from './Seat';
 import UnavailableSeat from './UnavailableSeat';
 
@@ -16,6 +17,7 @@ class SeatPicker extends Component{
     this.seatGenerator = this.seatGenerator.bind(this);
     this.handleSeatClick = this.handleSeatClick.bind(this);
     this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.rowGenerator = this.rowGenerator.bind(this);
   }
 
   handleSeatClick(seatNo){
@@ -41,8 +43,12 @@ class SeatPicker extends Component{
     }
   }
 
-  seatGenerator(seatNo){
+  rowGenerator(){
+    let rowLetters = Object.keys(this.props.seatmap)
+    return rowLetters.map(letter => <SeatRow seats= {this.props.seatmap[letter]} generator = {this.seatGenerator}/>)
+  }
 
+  seatGenerator(seatNo){
     let selectedStatus = false;
 
     if(this.state.bookedSeats.includes(seatNo)){
@@ -60,7 +66,7 @@ class SeatPicker extends Component{
 
   render(){
 
-    const seats = this.state.screeningSeats.map(seatNo => this.seatGenerator(seatNo));
+    const seats = this.rowGenerator();
 
     return(
       <>
