@@ -6,6 +6,7 @@ class SeatPicker extends Component{
   constructor(props){
     super(props);
     this.state = {
+      seatmap: this.props.seatmap,
       selectedSeats: [],
       screeningSeats: this.props.screening._embedded.room.seats
       .map(seat => seat.number),
