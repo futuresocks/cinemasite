@@ -37,7 +37,7 @@ public class DataLoader implements ApplicationRunner {
         Room room = new Room("Screen One");
         roomRepository.save(room);
 
-        String[] letters = new String[]{"a", "b", "c", "d"};
+        String[] letters = new String[]{"A", "B", "C", "D"};
 
         for(int i = 1; i <= 10; i++){
             for(String letter: letters){
