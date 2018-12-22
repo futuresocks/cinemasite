@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SeatRow from './SeatRow'
 import Seat from './Seat';
 import UnavailableSeat from './UnavailableSeat';
+import SeatDisplay from './SeatDisplay';
 
 class SeatPicker extends Component{
   constructor(props){
@@ -72,6 +73,7 @@ class SeatPicker extends Component{
       <>
       <h1>'mon pick yer seats</h1>
       {seats}
+      <SeatDisplay selectedSeats = {this.state.selectedSeats}/>
       <button onClick = {this.handleButtonClick}>Order Seats</button>
       </>
     )
