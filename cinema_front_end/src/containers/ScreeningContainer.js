@@ -74,15 +74,17 @@ class ScreeningContainer extends Component {
   render(){
     return (
       <>
-       <Modal
-         isOpen={this.state.modalIsOpen}
-         onRequestClose={this.closeModal}
-         contentLabel="Example Modal"
-       >
-        <SeatPicker screening = {this.state.screening} seatmap ={this.state.seatmap} seatLimit = {this.ticketCount()} handleClick = {this.bookTickets}/>
+       <Modal isOpen={this.state.modalIsOpen}
+              onRequestClose={this.closeModal}
+              contentLabel="SeatPicker">
+        <SeatPicker screening = {this.state.screening}
+                    seatmap ={this.state.seatmap}
+                    seatLimit = {this.ticketCount()}
+                    handleClick = {this.bookTickets}/>
        </Modal>
       <PriceDisplay price = {this.state.ticketPrice}/>
-      <TicketSelector handleSelect = {this.handleTicketSelect} handleSubmit = {this.openModal}/>
+      <TicketSelector handleSelect = {this.handleTicketSelect}
+                      handleSubmit = {this.openModal}/>
       </>
     )
   }
