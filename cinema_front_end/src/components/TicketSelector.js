@@ -29,7 +29,7 @@ class TicketSelector extends Component {
   }
 
   generateOptions(){
-    return [0,1,2,3,4,5].map(number => <option value ={number}>{number}</option>)
+    return [0,1,2,3,4,5].map((number, index) => <option key = {index} value ={number}>{number}</option>)
   }
 
   render(){
@@ -37,7 +37,7 @@ class TicketSelector extends Component {
     const ticketOptions = Object.keys(prices).map(ticketLevel => {
       return (
         <>
-        <label for={ticketLevel}>{ticketLevel.toUpperCase()}:</label>
+        <label htmlFor={ticketLevel}>{ticketLevel.toUpperCase()}:</label>
         <select id= {ticketLevel} onChange = {this.handleChange} value = {this.state.tickets[ticketLevel]}>
         {this.generateOptions()}
         </select>

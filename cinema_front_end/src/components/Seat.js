@@ -12,7 +12,7 @@ const Seat = ({selected, number, seatClick}) => {
   return (
     <div id = "seat">
     <h3>{number}</h3>
-    <img src = {imgSrc} onClick = {handleClick}/>
+    <img alt = {number} src = {imgSrc} onClick = {handleClick}/>
     </div>
   )
 }

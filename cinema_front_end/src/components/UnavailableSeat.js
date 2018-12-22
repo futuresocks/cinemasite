@@ -4,7 +4,7 @@ import './Seat.css';
 const UnavailableSeat = ({number}) => (
   <div id = "seat">
   <h3>{number}</h3>
-  <img src="/img/unavailable.png"/>
+  <img alt = {number} src="/img/unavailable.png"/>
   </div>
 )
 
