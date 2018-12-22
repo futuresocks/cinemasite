@@ -10,6 +10,7 @@ class ScreeningContainer extends Component {
     super(props);
     this.state = {
       screening: null,
+      seatmap: null,
       selectedTickets: [],
       selectedSeats: [],
       ticketPrice: 0,
@@ -40,9 +41,15 @@ class ScreeningContainer extends Component {
   }
 
   componentDidMount(){
-    fetch(`/api/screenings/${this.props.screeningId}`)
-    .then(data => data.json())
-    .then(screening => this.setState({screening}));
+
+      fetch(`/api/screenings/${this.props.screeningId}`)
+      .then(response => response.json())
+      .then(screening => this.setState({screening}))
+
+      fetch(`/api/screenings/${this.props.screeningId}/seating`)
+      .then(response => response.json())
+      .then(seatmap => this.setState({seatmap}))
+
   }
 
   handleTicketSelect(selectedTickets){
@@ -72,7 +79,7 @@ class ScreeningContainer extends Component {
          onRequestClose={this.closeModal}
          contentLabel="Example Modal"
        >
-        <SeatPicker screening = {this.state.screening} seatLimit = {this.ticketCount()} handleClick = {this.bookTickets}/>
+        <SeatPicker screening = {this.state.screening} seatmap ={this.state.seatmap} seatLimit = {this.ticketCount()} handleClick = {this.bookTickets}/>
        </Modal>
       <PriceDisplay price = {this.state.ticketPrice}/>
       <TicketSelector handleSelect = {this.handleTicketSelect} handleSubmit = {this.openModal}/>

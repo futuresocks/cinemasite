@@ -5,7 +5,7 @@ const Seat = ({selected, number, seatClick}) => {
   const handleClick = () => {
     seatClick(number)
   }
-  
+
   const imgSrc = selected ? "/img/selected.png" : "/img/available.png";
 
   return (

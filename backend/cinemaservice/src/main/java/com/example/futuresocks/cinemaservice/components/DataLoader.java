@@ -55,7 +55,7 @@ public class DataLoader implements ApplicationRunner {
         }
 
         for(int i = 1; i <= 40; i ++) {
-            if (i % 4 == 0) {
+            if ((i % 3 == 0) || (i % 5 == 0)) {
                 Screening screening = screeningRepository.findById(Long.valueOf(1)).get();
                 Seat seat = seatRepository.findById(Long.valueOf(i)).get();
                 Ticket ticket = new Ticket(screening, seat);
