@@ -7,7 +7,7 @@ const SeatRow = ({seats, generator}) => {
   const row = seats.map(seat => generator(seat.number))
 
   return (
-    <div class= "seatrow">
+    <div className = "seatrow">
     {row}
     </div>
   )
