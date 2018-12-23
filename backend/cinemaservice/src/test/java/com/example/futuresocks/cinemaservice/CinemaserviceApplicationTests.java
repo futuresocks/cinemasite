@@ -3,6 +3,7 @@ package com.example.futuresocks.cinemaservice;
 import com.example.futuresocks.cinemaservice.models.*;
 import com.example.futuresocks.cinemaservice.repositories.*;
 import com.example.futuresocks.cinemaservice.repositories.ScreeningRepository;
+import com.example.futuresocks.cinemaservice.repositories.SeatRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

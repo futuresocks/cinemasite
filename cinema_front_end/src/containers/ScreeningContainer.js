@@ -3,7 +3,8 @@ import Modal from 'react-modal';
 import SeatPicker from '../components/SeatPicker';
 import TicketSelector from '../components/TicketSelector';
 import PriceDisplay from '../components/PriceDisplay';
-import prices from '../constants/Prices'
+import prices from '../constants/Prices';
+import Request from '../helpers/Request';
 
 class ScreeningContainer extends Component {
   constructor(props){
@@ -65,9 +66,14 @@ class ScreeningContainer extends Component {
     return totalPrice;
   }
 
-  bookTickets(){
+  bookTickets(seatIDs){
     //post ticket numbers and screening number to API
+    const payload = {};
+    payload[this.props.screeningId] = seatIDs;
+    const request = new Request();
+    request.post("/api/tickets/new", payload);
     this.closeModal();
+    //redirect to confirmation screen
     console.log('tickets booked!');
   }
 

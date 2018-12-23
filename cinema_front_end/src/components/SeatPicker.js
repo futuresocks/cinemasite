@@ -40,7 +40,10 @@ class SeatPicker extends Component{
 
   handleButtonClick(){
     if(this.state.selectedSeats.length === this.props.seatLimit){
-      this.props.handleClick();
+      const seatIDs = this.props.screening._embedded.room.seats
+                      .filter(seat => this.state.selectedSeats.includes(seat.number))
+                      .map(seat => seat.id)
+      this.props.handleClick(seatIDs);
     }
   }
 
