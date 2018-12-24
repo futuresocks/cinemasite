@@ -26,7 +26,9 @@ class ScreeningContainer extends Component {
   }
 
   openModal() {
-    this.setState({modalIsOpen: true});
+    if(this.state.ticketPrice > 0){
+      this.setState({modalIsOpen: true})
+    }
   }
 
   closeModal() {
@@ -67,7 +69,6 @@ class ScreeningContainer extends Component {
   }
 
   bookTickets(seatIDs){
-    //post ticket numbers and screening number to API
     const payload = {};
     payload[this.props.screeningId] = seatIDs;
     const request = new Request();
