@@ -75,7 +75,7 @@ class ScreeningContainer extends Component {
     request.post("/api/tickets/new", payload);
     this.closeModal();
     //redirect to confirmation screen
-    console.log('tickets booked!');
+    window.location = "/confirmation"
   }
 
   render(){
