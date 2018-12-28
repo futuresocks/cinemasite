@@ -1,6 +1,11 @@
 package com.example.futuresocks.cinemaservice.models;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +21,6 @@ public class Screening {
     @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
 
-    @Column
-    private String time;
-
     @OneToMany(mappedBy = "screening")
     private List<Ticket> tickets;
 
@@ -26,11 +28,15 @@ public class Screening {
     @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
-    public Screening(Movie movie, String time, Room room) {
-        this.time = time;
+    @JsonSerialize(using= LocalDateTimeSerializer.class)
+    @Column(name = "date_time")
+    private LocalDateTime dateTime;
+
+    public Screening(Movie movie, Room room, LocalDateTime dateTime) {
         this.movie = movie;
         this.tickets = new ArrayList<Ticket>();
         this.room = room;
+        this.dateTime = dateTime;
     }
 
     public Screening() {
@@ -52,14 +58,6 @@ public class Screening {
         this.movie = movie;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public List<Ticket> getTickets() {
         return tickets;
     }
@@ -78,5 +76,17 @@ public class Screening {
 
     public void addSeat(Ticket ticket){
         this.tickets.add(ticket);
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 }

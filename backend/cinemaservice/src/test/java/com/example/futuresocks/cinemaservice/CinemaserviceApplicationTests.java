@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
+import java.time.Month;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CinemaserviceApplicationTests {
@@ -53,7 +56,9 @@ public class CinemaserviceApplicationTests {
 		Room room = new Room("Screen One");
 		roomRepository.save(room);
 
-		Screening screening = new Screening(movie, "12:00pm", room);
+		LocalDateTime dateTime = LocalDateTime.of(2018, Month.DECEMBER, 28, 12, 00);
+
+		Screening screening = new Screening(movie, room, dateTime);
 		screeningRepository.save(screening);
 	}
 
@@ -74,7 +79,9 @@ public class CinemaserviceApplicationTests {
 		Room room = new Room("Screen One");
 		roomRepository.save(room);
 
-		Screening screening = new Screening(movie, "12:00pm", room);
+		LocalDateTime dateTime = LocalDateTime.of(2018, Month.DECEMBER, 28, 12, 00);
+
+		Screening screening = new Screening(movie, room, dateTime);
 		screeningRepository.save(screening);
 
 		Seat seat = new Seat("A1", room);

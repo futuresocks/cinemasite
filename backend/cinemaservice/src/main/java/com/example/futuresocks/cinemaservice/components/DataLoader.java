@@ -4,10 +4,14 @@ import com.example.futuresocks.cinemaservice.models.*;
 import com.example.futuresocks.cinemaservice.repositories.*;
 import com.example.futuresocks.cinemaservice.repositories.ScreeningRepository;
 import com.example.futuresocks.cinemaservice.repositories.SeatRepository;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
+import java.time.Month;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -48,10 +52,10 @@ public class DataLoader implements ApplicationRunner {
         }
         }
 
-        String[] showTimes = new String[]{"11:00", "13:00"};
+        LocalDateTime[] showTimes = new LocalDateTime[]{LocalDateTime.of(2018, Month.DECEMBER, 28, 11, 00), LocalDateTime.of(2018, Month.DECEMBER, 28, 13, 00)};
 
-        for(String showTime: showTimes){
-            Screening screening = new Screening(robocop, showTime, room);
+        for(LocalDateTime showTime: showTimes){
+            Screening screening = new Screening(robocop, room, showTime);
             screeningRepository.save(screening);
         }
 
