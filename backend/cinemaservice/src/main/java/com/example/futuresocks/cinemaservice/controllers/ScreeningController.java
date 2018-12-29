@@ -33,6 +33,7 @@ import java.util.List;
         List<Seat> seats = room.getSeats();
         return SeatMapper.mapSeats(seats);
     }
+    
 
     }
 
