@@ -26,8 +26,6 @@ public class ScreeningRepositoryImpl implements ScreeningRepositoryCustom {
             Criteria cr = session.createCriteria(Screening.class);
             cr.add(Restrictions.gt("dateTime", dateTime));
             cr.add(Restrictions.lt("dateTime", dateTime.plusDays(1)));
-            cr.createAlias("movie", " movie");
-            cr.addOrder(Order.asc("movie"));
             results = cr.list();
         } catch (HibernateException e){
             e.printStackTrace();
