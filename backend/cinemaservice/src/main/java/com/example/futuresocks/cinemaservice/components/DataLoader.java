@@ -39,6 +39,9 @@ public class DataLoader implements ApplicationRunner {
         Movie robocop = new Movie("Robocop", "In a dystopic and crime-ridden Detroit, a terminally wounded cop returns to the force as a powerful cyborg haunted by submerged memories.", "https://m.media-amazon.com/images/M/MV5BZWVlYzU2ZjQtZmNkMi00OTc3LTkwZmYtZDVjNmY4OWFmZGJlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SY1000_CR0,0,644,1000_AL_.jpg", 103, 1987);
         movieRepository.save(robocop);
 
+        Movie darkman = new Movie("Darkman", "A brilliant scientist left for dead returns to exact revenge on the people who burned him alive.", "https://i.pinimg.com/originals/11/d3/89/11d38940af933f409ac48391d74a9663.jpg", 96, 1990);
+        movieRepository.save(darkman);
+
         Room room = new Room("Screen One");
         roomRepository.save(room);
 
@@ -58,6 +61,11 @@ public class DataLoader implements ApplicationRunner {
             Screening screening = new Screening(robocop, room, showTime);
             screeningRepository.save(screening);
         }
+
+        LocalDateTime darkmanTime = LocalDateTime.of(2018, Month.DECEMBER, 29, 16, 00);
+
+        Screening darkmanScreening = new Screening(darkman, room, darkmanTime);
+        screeningRepository.save(darkmanScreening);
 
         for(int i = 1; i <= 40; i ++) {
             if ((i % 3 == 0) || (i % 5 == 0)) {
