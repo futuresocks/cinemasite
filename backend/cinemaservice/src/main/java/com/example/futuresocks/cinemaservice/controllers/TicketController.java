@@ -3,7 +3,7 @@ package com.example.futuresocks.cinemaservice.controllers;
 import com.example.futuresocks.cinemaservice.models.Screening;
 import com.example.futuresocks.cinemaservice.models.Seat;
 import com.example.futuresocks.cinemaservice.models.Ticket;
-import com.example.futuresocks.cinemaservice.repositories.ScreeningRepository;
+import com.example.futuresocks.cinemaservice.repositories.ScreeningRepository.ScreeningRepository;
 import com.example.futuresocks.cinemaservice.repositories.SeatRepository;
 import com.example.futuresocks.cinemaservice.repositories.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;

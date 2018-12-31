@@ -1,5 +1,7 @@
 package com.example.futuresocks.cinemaservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +17,11 @@ public class Room {
     @Column
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)
     private List<Seat> seats;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)
     private List<Screening> screenings;
 

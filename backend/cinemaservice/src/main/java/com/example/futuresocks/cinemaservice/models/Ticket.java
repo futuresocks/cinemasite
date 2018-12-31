@@ -1,5 +1,7 @@
 package com.example.futuresocks.cinemaservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,10 +12,11 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "screening_id", nullable = false)
     private Screening screening;
-
+    
     @ManyToOne
     @JoinColumn(name = "seat_id", nullable = false)
     private Seat seat;
