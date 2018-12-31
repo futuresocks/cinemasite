@@ -55,17 +55,19 @@ public class DataLoader implements ApplicationRunner {
         }
         }
 
-        LocalDateTime[] showTimes = new LocalDateTime[]{LocalDateTime.of(2018, Month.DECEMBER, 28, 11, 00), LocalDateTime.of(2018, Month.DECEMBER, 28, 13, 00)};
+        LocalDateTime[] robocopTimes = new LocalDateTime[]{LocalDateTime.of(2018, Month.DECEMBER, 28, 11, 00), LocalDateTime.of(2018, Month.DECEMBER, 28, 13, 00)};
 
-        for(LocalDateTime showTime: showTimes){
+        for(LocalDateTime showTime: robocopTimes){
             Screening screening = new Screening(robocop, room, showTime);
             screeningRepository.save(screening);
         }
 
-        LocalDateTime darkmanTime = LocalDateTime.of(2018, Month.DECEMBER, 29, 16, 00);
+        LocalDateTime[] darkmanTimes = new LocalDateTime[]{LocalDateTime.of(2018, Month.DECEMBER, 29, 16, 00), LocalDateTime.of(2018, Month.DECEMBER, 28, 16, 00)};
 
-        Screening darkmanScreening = new Screening(darkman, room, darkmanTime);
-        screeningRepository.save(darkmanScreening);
+        for(LocalDateTime showTime: darkmanTimes){
+            Screening screening = new Screening(darkman, room, showTime);
+            screeningRepository.save(screening);
+        }
 
         for(int i = 1; i <= 40; i ++) {
             if ((i % 3 == 0) || (i % 5 == 0)) {
