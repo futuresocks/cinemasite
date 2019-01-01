@@ -33,8 +33,9 @@ import java.util.List;
         return SeatMapper.mapSeats(seats);
     }
 
-    @GetMapping("datesearch/{year}/{month}/{day}")
+    @GetMapping("datesearch/{month}/{day}/{year}")
     public List<Screening> getScreeningsByDate(@PathVariable int year, @PathVariable int month, @PathVariable int day){
+        System.out.println("pinged!");
         LocalDateTime searchDate = LocalDateTime.of(year, Month.of(month), day, 00, 00);
         return screeningRepository.getScreeningsByDate(searchDate);
     }
