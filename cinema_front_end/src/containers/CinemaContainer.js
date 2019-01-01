@@ -1,21 +1,24 @@
 import React, {Component} from 'react';
 import FilmsContainer from './FilmsContainer.js';
+import Request from '../helpers/Request.js';
+import moment from 'moment';
 
 class CinemaContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      movies: null
+      screenings: null
     }
   }
 
   componentDidMount(){
-    fetch("/api/movies")
-    .then(data => data.json())
-    .then(jsonData => {
-      let movies = jsonData._embedded.movies;
-      this.setState({movies});
-  })
+
+    const todaysDate = moment().format('L');
+
+    const request = new Request();
+
+    request.get(`/api/screenings/datesearch/${todaysDate}`)
+    .then(screenings => this.setState({screenings}))
 }
 
 render(){
