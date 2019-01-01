@@ -55,14 +55,14 @@ public class DataLoader implements ApplicationRunner {
         }
         }
 
-        LocalDateTime[] robocopTimes = new LocalDateTime[]{LocalDateTime.of(2018, Month.DECEMBER, 28, 11, 00), LocalDateTime.of(2018, Month.DECEMBER, 28, 13, 00)};
+        LocalDateTime[] robocopTimes = new LocalDateTime[]{LocalDateTime.now().withHour(11).withMinute(00), LocalDateTime.now().withHour(13).withMinute(00)};
 
         for(LocalDateTime showTime: robocopTimes){
             Screening screening = new Screening(robocop, room, showTime);
             screeningRepository.save(screening);
         }
 
-        LocalDateTime[] darkmanTimes = new LocalDateTime[]{LocalDateTime.of(2018, Month.DECEMBER, 29, 16, 00), LocalDateTime.of(2018, Month.DECEMBER, 28, 16, 00)};
+        LocalDateTime[] darkmanTimes = new LocalDateTime[]{LocalDateTime.now().plusDays(1).withHour(16).withMinute(00), LocalDateTime.now().withHour(14).withMinute(00)};
 
         for(LocalDateTime showTime: darkmanTimes){
             Screening screening = new Screening(darkman, room, showTime);
