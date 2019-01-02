@@ -1,7 +1,8 @@
 package com.example.futuresocks.cinemaservice;
 
-import com.example.futuresocks.cinemaservice.components.SeatMapper;
+import com.example.futuresocks.cinemaservice.components.DataMapper;
 import com.example.futuresocks.cinemaservice.models.Room;
+import com.example.futuresocks.cinemaservice.models.Screening;
 import com.example.futuresocks.cinemaservice.models.Seat;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestSeatMapper {
+public class TestDataMapper {
 
     @Test
     public void canMapSeats(){
@@ -29,12 +30,11 @@ public class TestSeatMapper {
         seats.add(seat2);
         seats.add(seat3);
 
-        SeatMapper seatMapper = new SeatMapper();
-
         HashMap<String, List<Seat>> expected = new HashMap<>();
         expected.put("A", new ArrayList<Seat>(Arrays.asList(seat1)));
         expected.put("B", new ArrayList<Seat>(Arrays.asList(seat2, seat3)));
 
-        assertEquals(expected, seatMapper.mapSeats(seats));
+        assertEquals(expected, DataMapper.mapSeats(seats));
     }
+
 }

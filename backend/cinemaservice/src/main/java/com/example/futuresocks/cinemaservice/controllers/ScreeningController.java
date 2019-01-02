@@ -1,6 +1,6 @@
 package com.example.futuresocks.cinemaservice.controllers;
 
-import com.example.futuresocks.cinemaservice.components.SeatMapper;
+import com.example.futuresocks.cinemaservice.components.DataMapper;
 import com.example.futuresocks.cinemaservice.models.Room;
 import com.example.futuresocks.cinemaservice.models.Screening;
 import com.example.futuresocks.cinemaservice.models.Seat;
@@ -30,14 +30,14 @@ import java.util.List;
 
         Room room = screening.getRoom();
         List<Seat> seats = room.getSeats();
-        return SeatMapper.mapSeats(seats);
+        return DataMapper.mapSeats(seats);
     }
 
     @GetMapping("datesearch/{month}/{day}/{year}")
-    public List<Screening> getScreeningsByDate(@PathVariable int year, @PathVariable int month, @PathVariable int day){
-        System.out.println("pinged!");
+    public HashMap<String, List<Screening>> getScreeningsByDate(@PathVariable int year, @PathVariable int month, @PathVariable int day){
         LocalDateTime searchDate = LocalDateTime.of(year, Month.of(month), day, 00, 00);
-        return screeningRepository.getScreeningsByDate(searchDate);
+        List<Screening> screeningData = screeningRepository.getScreeningsByDate(searchDate);
+        return DataMapper.mapScreenings(screeningData);
     }
 
     }
